@@ -3,3 +3,4 @@ tensorflow-datasets
 matplotlib
 scipy
 jupyter
+bs4
