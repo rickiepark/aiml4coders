@@ -1,0 +1,33 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"/>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/toxicity"></script>
+    <script>
+    const threshold = 0.7;
+    toxicity.load(threshold).then(model => {
+        const sentences = ['you suck',
+                           'I think you are stupid',
+                           'i am going to kick your head in',
+                           'you feeling lucky, punk?'];
+
+        model.classify(sentences).then(predictions => {
+            console.log(predictions)
+            for (sentence=0; sentence<sentences.length; sentence++) {
+                for (toxic_type=0; toxic_type<7; toxic_type++) {
+                    if (predictions[toxic_type].results[sentence].match) {
+                        console.log("문장: " + sentences[sentence] + "\n" +
+                                    predictions[toxic_type].label +
+                                    "일 확률: " +
+                                    predictions[toxic_type].results[sentence].probabilities[1]);
+                    }
+                }
+            }
+        });
+    });
+    </script>
+</head>
+<body>
+    <h1>유해 텍스트 분류기 사용하기</h1>
+</body>
+</html>
