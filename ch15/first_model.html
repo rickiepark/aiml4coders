@@ -5,17 +5,17 @@
     <script lang="js">
         async function doTraining(model){
             const history =
-                  await model.fit(xs, ys,
-                        { epochs: 500,
-                          callbacks:{
-                              onEpochEnd: async(epoch, logs) =>{
-                                  console.log("에포크:"
-                                              + epoch
-                                              + " 손실:"
-                                              + logs.loss);
-                              }
-                          }
-                        });
+                await model.fit(xs, ys,
+                    { epochs: 500,
+                        callbacks:{
+                            onEpochEnd: async(epoch, logs) =>{
+                                console.log("에포크:"
+                                            + epoch
+                                            + " 손실:"
+                                            + logs.loss);
+                            }
+                        }
+                    });
         }
         const model = tf.sequential();
         model.add(tf.layers.dense({units: 1, inputShape: [1]}));
