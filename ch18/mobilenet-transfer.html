@@ -1,0 +1,25 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"/>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+    <script src="webcam.js"></script>
+    <script src="rps-dataset.js"></script>
+</head>
+<body>
+    <div>
+        <video autoplay playsinline muted id="wc" width="224" height="224"/>
+    </div>
+    <button type="button" id="0" onclick="handleButton(this)" >바위</button>
+    <button type="button" id="1" onclick="handleButton(this)" >보</button>
+    <button type="button" id="2" onclick="handleButton(this)" >가위</button>
+    <div id="rocksamples">바위 샘플:</div>
+    <div id="papersamples">보 샘플:</div>
+    <div id="scissorssamples">가위 샘플:</div>
+    <button type="button" id="train" onclick="doTraining()" >신경망 훈련하기</button>
+    <div id="dummy">훈련이 완료되면 ‘예측 시작' 버튼을 눌러 예측 결과를 확인할 수 있습니다. ‘예측 중지' 버튼을 누르면 예측이 종료됩니다.</div>
+    <button type="button" id="startPredicting" onclick="startPredicting()" >예측 시작</button>
+	<button type="button" id="stopPredicting" onclick="stopPredicting()" >예측 중지</button>
+	<div id="prediction"></div>
+    <script src="index.js"></script>
+</body>
+</html>
